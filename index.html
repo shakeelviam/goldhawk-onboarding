@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,112 +13,66 @@
       color: #1a1a1a;
       min-height: 100vh;
       padding: 2rem 1rem;
+      transition: direction 0.1s;
     }
 
-    .container {
-      max-width: 560px;
-      margin: 0 auto;
+    /* RTL overrides */
+    body.rtl {
+      font-family: "Segoe UI", "Tahoma", "Arabic Typesetting",
+                   -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    .header {
-      margin-bottom: 2rem;
-    }
+    .container { max-width: 560px; margin: 0 auto; }
 
+    .header { margin-bottom: 2rem; }
     .header h1 {
-      font-size: 26px;
-      font-weight: 600;
-      letter-spacing: -0.3px;
-      margin-bottom: 6px;
+      font-size: 26px; font-weight: 600;
+      letter-spacing: -0.3px; margin-bottom: 6px;
     }
-
-    .header p {
-      font-size: 15px;
-      color: #555;
-      line-height: 1.6;
-    }
+    .header p { font-size: 15px; color: #555; line-height: 1.6; }
 
     .warning-box {
-      background: #fffbeb;
-      border: 1px solid #f0c040;
-      border-radius: 10px;
-      padding: 12px 16px;
-      font-size: 13.5px;
-      color: #7a5c00;
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
+      background: #fffbeb; border: 1px solid #f0c040;
+      border-radius: 10px; padding: 12px 16px;
+      font-size: 13.5px; color: #7a5c00;
+      margin-bottom: 1.5rem; line-height: 1.5;
     }
-
-    .warning-box strong {
-      display: block;
-      margin-bottom: 2px;
-    }
+    .warning-box strong { display: block; margin-bottom: 2px; }
 
     .card {
-      background: #ffffff;
-      border: 1px solid #e5e5e0;
-      border-radius: 14px;
-      padding: 1.5rem;
-      margin-bottom: 1rem;
+      background: #ffffff; border: 1px solid #e5e5e0;
+      border-radius: 14px; padding: 1.5rem; margin-bottom: 1rem;
     }
 
     .section-title {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #888;
-      margin-bottom: 1.25rem;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: #888; margin-bottom: 1.25rem;
     }
 
-    .field {
-      margin-bottom: 1.1rem;
-    }
-
-    .field:last-child {
-      margin-bottom: 0;
-    }
+    .field { margin-bottom: 1.1rem; }
+    .field:last-child { margin-bottom: 0; }
 
     label {
-      display: block;
-      font-size: 13.5px;
-      font-weight: 500;
-      color: #333;
-      margin-bottom: 6px;
+      display: block; font-size: 13.5px;
+      font-weight: 500; color: #333; margin-bottom: 6px;
     }
-
-    label .note {
-      font-weight: 400;
-      color: #999;
-      font-size: 12px;
-    }
+    label .note { font-weight: 400; color: #999; font-size: 12px; }
 
     input[type="text"],
     input[type="email"],
     input[type="tel"],
     input[type="number"],
-    select,
-    textarea {
-      width: 100%;
-      padding: 10px 13px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 14px;
-      font-family: inherit;
-      color: #1a1a1a;
-      background: #fff;
-      outline: none;
+    select {
+      width: 100%; padding: 10px 13px;
+      border: 1px solid #ddd; border-radius: 8px;
+      font-size: 14px; font-family: inherit;
+      color: #1a1a1a; background: #fff; outline: none;
       transition: border-color 0.15s;
-      appearance: none;
-      -webkit-appearance: none;
+      appearance: none; -webkit-appearance: none;
     }
-
-    input:focus, select:focus, textarea:focus {
-      border-color: #555;
-    }
-
-    input::placeholder, textarea::placeholder {
-      color: #bbb;
-    }
+    input:focus, select:focus { border-color: #555; }
+    input::placeholder { color: #bbb; }
 
     select {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
@@ -127,131 +81,112 @@
       padding-right: 36px;
     }
 
-    .field-note {
-      font-size: 12px;
-      color: #999;
-      margin-top: 5px;
-      line-height: 1.4;
+    body.rtl select {
+      background-position: left 12px center;
+      padding-right: 13px;
+      padding-left: 36px;
     }
 
+    .field-note { font-size: 12px; color: #999; margin-top: 5px; line-height: 1.4; }
     .field-note.danger {
-      color: #c0392b;
-      background: #fdf2f2;
+      color: #c0392b; background: #fdf2f2;
       border: 1px solid #f5c6c6;
-      border-radius: 6px;
-      padding: 8px 10px;
-      margin-top: 8px;
+      border-radius: 6px; padding: 8px 10px; margin-top: 8px;
     }
 
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    /* Language selector — at top, big and clear */
+    .lang-card {
+      background: #ffffff; border: 1.5px solid #1a1a1a;
+      border-radius: 14px; padding: 1.25rem 1.5rem; margin-bottom: 1rem;
+    }
+    .lang-card .section-title { margin-bottom: 1rem; }
+
+    .lang-group { display: flex; gap: 8px; flex-wrap: wrap; }
+    .lang-option { display: none; }
+    .lang-label {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 16px; border: 1.5px solid #ddd;
+      border-radius: 22px; font-size: 14px; font-weight: 500;
+      color: #555; cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+      user-select: none;
+    }
+    .lang-label:hover { border-color: #999; color: #333; }
+    .lang-option:checked + .lang-label {
+      border-color: #1a1a1a; background: #1a1a1a; color: #fff;
+    }
+    .lang-hint {
+      font-size: 12px; color: #999; margin-top: 10px; line-height: 1.5;
     }
 
-    .ack-card {
-      background: #fafaf8;
+    /* Custom risk reveal */
+    #custom-risk-field { display: none; margin-top: 10px; }
+
+    /* Disclaimer card */
+    .disclaimer-card {
+      background: #fafaf8; border: 1px solid #e5e5e0;
+      border-radius: 14px; padding: 1.5rem; margin-bottom: 1rem;
     }
+    .disclaimer-body {
+      font-size: 12.5px; color: #555; line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+    .disclaimer-body p { margin-bottom: 0.75rem; }
+    .disclaimer-body p:last-child { margin-bottom: 0; }
+    .disclaimer-body strong { color: #333; font-weight: 600; }
+    .disclaimer-body ol {
+      padding-left: 1.25rem; margin-top: 6px;
+    }
+    body.rtl .disclaimer-body ol {
+      padding-left: 0; padding-right: 1.25rem;
+    }
+    .disclaimer-body ol li { margin-bottom: 6px; }
 
     .ack-row {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
+      display: flex; gap: 12px; align-items: flex-start;
+      padding-top: 1rem; border-top: 1px solid #e8e8e3;
     }
-
     .ack-row input[type="checkbox"] {
-      width: 17px;
-      height: 17px;
-      flex-shrink: 0;
-      margin-top: 2px;
-      accent-color: #1a1a1a;
-      cursor: pointer;
+      width: 18px; height: 18px; flex-shrink: 0;
+      margin-top: 2px; accent-color: #1a1a1a; cursor: pointer;
     }
-
     .ack-text {
-      font-size: 13.5px;
-      color: #555;
-      line-height: 1.6;
+      font-size: 13px; color: #444; line-height: 1.6; font-weight: 500;
     }
 
     .submit-btn {
-      width: 100%;
-      padding: 13px;
-      background: #1a1a1a;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: 500;
-      font-family: inherit;
-      cursor: pointer;
-      margin-top: 0.5rem;
-      transition: background 0.15s, transform 0.1s;
+      width: 100%; padding: 13px; background: #1a1a1a; color: #fff;
+      border: none; border-radius: 10px; font-size: 15px;
+      font-weight: 500; font-family: inherit; cursor: pointer;
+      margin-top: 0.5rem; transition: background 0.15s, transform 0.1s;
     }
-
     .submit-btn:hover { background: #333; }
     .submit-btn:active { transform: scale(0.99); }
     .submit-btn:disabled { background: #aaa; cursor: not-allowed; }
 
     .footer-note {
-      text-align: center;
-      font-size: 12px;
-      color: #aaa;
-      margin-top: 1.5rem;
-      line-height: 1.6;
+      text-align: center; font-size: 12px; color: #aaa;
+      margin-top: 1.5rem; line-height: 1.6;
     }
 
-    /* Custom risk reveal */
-    #custom-risk-field {
-      display: none;
-      margin-top: 10px;
-    }
-
-    /* Success screen */
-    .success-screen {
-      display: none;
-      text-align: center;
-      padding: 3rem 1rem;
-    }
-
+    .success-screen { display: none; text-align: center; padding: 3rem 1rem; }
     .success-icon {
-      width: 56px;
-      height: 56px;
-      background: #f0faf4;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.5rem;
+      width: 56px; height: 56px; background: #f0faf4;
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; margin: 0 auto 1.5rem;
     }
-
-    .success-screen h2 {
-      font-size: 22px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
+    .success-screen h2 { font-size: 22px; font-weight: 600; margin-bottom: 10px; }
     .success-screen p {
-      font-size: 15px;
-      color: #555;
-      line-height: 1.7;
-      max-width: 400px;
-      margin: 0 auto;
+      font-size: 15px; color: #555; line-height: 1.7;
+      max-width: 400px; margin: 0 auto;
     }
 
-    .error-msg {
-      color: #c0392b;
-      font-size: 13px;
-      margin-top: 5px;
-      display: none;
-    }
-
+    .error-msg { color: #c0392b; font-size: 13px; margin-top: 5px; display: none; }
     .submitting-msg {
-      text-align: center;
-      font-size: 14px;
-      color: #666;
-      margin-top: 10px;
-      display: none;
+      text-align: center; font-size: 14px; color: #666;
+      margin-top: 10px; display: none;
     }
 
     @media (max-width: 480px) {
@@ -261,158 +196,335 @@
   </style>
 </head>
 <body>
-
 <div class="container">
 
-  <!-- Form -->
   <div id="form-section">
-    <div class="header">
-      <h1>GoldHawk — account setup</h1>
-      <p>Fill in your details below. We will contact you privately to complete the setup securely.</p>
-    </div>
 
-    <div class="warning-box">
-      <strong>Do not enter your MT5 password here.</strong>
-      Our team will contact you privately via WhatsApp to collect it securely.
+    <div class="header">
+      <h1 data-en="GoldHawk — account setup" data-ar="GoldHawk — إعداد الحساب">
+        GoldHawk — account setup
+      </h1>
+      <p data-en="Fill in your details below. We will contact you privately to complete the setup securely."
+         data-ar="يرجى تعبئة بياناتك أدناه. سنتواصل معك بشكل خاص لإتمام الإعداد بأمان.">
+        Fill in your details below. We will contact you privately to complete the setup securely.
+      </p>
     </div>
 
     <form id="onboarding-form" novalidate>
 
-      <!-- Personal details -->
+      <!-- ── STEP 0: Language — always first ── -->
+      <div class="lang-card">
+        <p class="section-title"
+           data-en="Notification language"
+           data-ar="لغة الإشعارات">
+          Notification language
+        </p>
+        <div class="lang-group">
+          <input type="radio" name="lang" id="lang-en" value="en" class="lang-option" checked>
+          <label for="lang-en" class="lang-label">🇬🇧 English</label>
+
+          <input type="radio" name="lang" id="lang-ar" value="ar" class="lang-option">
+          <label for="lang-ar" class="lang-label">🇸🇦 العربية</label>
+
+          <input type="radio" name="lang" id="lang-both" value="both" class="lang-option">
+          <label for="lang-both" class="lang-label">🌐 كلاهما / Both</label>
+        </div>
+        <p class="lang-hint"
+           data-en="Select your preferred language for trade alerts. The form will switch language to match your selection."
+           data-ar="اختر لغتك المفضلة للتنبيهات. سيتغير النموذج تلقائياً ليعكس اختيارك.">
+          Select your preferred language for trade alerts. The form will switch language to match your selection.
+        </p>
+      </div>
+
+      <!-- ── Warning box ── -->
+      <div class="warning-box">
+        <strong data-en="Do not enter your MT5 password here."
+                data-ar="لا تُدخل كلمة مرور MT5 هنا.">
+          Do not enter your MT5 password here.
+        </strong>
+        <span data-en="Our team will contact you privately via WhatsApp to collect it securely."
+              data-ar="سيتواصل معك فريقنا عبر واتساب لاستلامها بشكل آمن.">
+          Our team will contact you privately via WhatsApp to collect it securely.
+        </span>
+      </div>
+
+      <!-- ── Personal details ── -->
       <div class="card">
-        <p class="section-title">Personal details</p>
+        <p class="section-title" data-en="Personal details" data-ar="البيانات الشخصية">
+          Personal details
+        </p>
 
         <div class="field">
-          <label for="name">Full name *</label>
-          <input type="text" id="name" name="name" placeholder="Ahmed Al-Rashidi" required>
-          <span class="error-msg" id="err-name">Please enter your full name.</span>
+          <label for="name"
+                 data-en="Full name *"
+                 data-ar="الاسم الكامل *">Full name *</label>
+          <input type="text" id="name"
+                 data-placeholder-en="Ahmed Al-Rashidi"
+                 data-placeholder-ar="أحمد الراشدي"
+                 placeholder="Ahmed Al-Rashidi" required>
+          <span class="error-msg" id="err-name"
+                data-en="Please enter your full name."
+                data-ar="يرجى إدخال اسمك الكامل.">
+            Please enter your full name.
+          </span>
         </div>
 
         <div class="field">
-          <label for="email">
-            Email address *
-            <span class="note"> — trade alerts will be sent here</span>
+          <label for="email"
+                 data-en="Email address * — trade alerts will be sent here"
+                 data-ar="البريد الإلكتروني * — ستُرسل تنبيهات الصفقات هنا">
+            Email address * <span class="note">— trade alerts will be sent here</span>
           </label>
-          <input type="email" id="email" name="email" placeholder="ahmed@gmail.com" required>
-          <span class="error-msg" id="err-email">Please enter a valid email.</span>
+          <input type="email" id="email"
+                 data-placeholder-en="ahmed@gmail.com"
+                 data-placeholder-ar="ahmed@gmail.com"
+                 placeholder="ahmed@gmail.com" required>
+          <span class="error-msg" id="err-email"
+                data-en="Please enter a valid email."
+                data-ar="يرجى إدخال بريد إلكتروني صحيح.">
+            Please enter a valid email.
+          </span>
         </div>
 
         <div class="field">
-          <label for="whatsapp">WhatsApp number *</label>
-          <input type="tel" id="whatsapp" name="whatsapp" placeholder="+965 XXXX XXXX" required>
-          <p class="field-note">We will contact you on this number to complete setup.</p>
-          <span class="error-msg" id="err-whatsapp">Please enter your WhatsApp number.</span>
+          <label for="whatsapp"
+                 data-en="WhatsApp number *"
+                 data-ar="رقم واتساب *">WhatsApp number *</label>
+          <input type="tel" id="whatsapp"
+                 data-placeholder-en="+965 XXXX XXXX"
+                 data-placeholder-ar="+965 XXXX XXXX"
+                 placeholder="+965 XXXX XXXX" required>
+          <p class="field-note"
+             data-en="We will contact you on this number to complete setup."
+             data-ar="سنتواصل معك على هذا الرقم لإتمام الإعداد.">
+            We will contact you on this number to complete setup.
+          </p>
+          <span class="error-msg" id="err-whatsapp"
+                data-en="Please enter your WhatsApp number."
+                data-ar="يرجى إدخال رقم واتساب.">
+            Please enter your WhatsApp number.
+          </span>
         </div>
       </div>
 
-      <!-- MT5 account details -->
+      <!-- ── MT5 account details ── -->
       <div class="card">
-        <p class="section-title">MT5 account details</p>
+        <p class="section-title" data-en="MT5 account details" data-ar="بيانات حساب MT5">
+          MT5 account details
+        </p>
 
         <div class="field">
-          <label for="broker">Broker *</label>
-          <select id="broker" name="broker" required>
-            <option value="">Select your broker</option>
+          <label for="broker"
+                 data-en="Broker *"
+                 data-ar="الوسيط *">Broker *</label>
+          <select id="broker" required>
+            <option value=""
+                    data-en="Select your broker"
+                    data-ar="اختر الوسيط">Select your broker</option>
             <option value="NCM Investment Kuwait">NCM Investment Kuwait</option>
             <option value="Caveo">Caveo</option>
             <option value="CFI Financial">CFI Financial</option>
-            <option value="Other">Other</option>
+            <option value="Other"
+                    data-en="Other"
+                    data-ar="أخرى">Other</option>
           </select>
-          <span class="error-msg" id="err-broker">Please select your broker.</span>
+          <span class="error-msg" id="err-broker"
+                data-en="Please select your broker."
+                data-ar="يرجى اختيار الوسيط.">
+            Please select your broker.
+          </span>
         </div>
 
         <div class="field">
-          <label for="mt5_login">
-            MT5 account number *
-            <span class="note"> — visible in your app</span>
+          <label for="mt5_login"
+                 data-en="MT5 account number * — visible in your app"
+                 data-ar="رقم حساب MT5 * — ظاهر في تطبيقك">
+            MT5 account number * <span class="note">— visible in your app</span>
           </label>
-          <input type="text" id="mt5_login" name="mt5_login" placeholder="e.g. 1080644" required>
-          <span class="error-msg" id="err-mt5_login">Please enter your MT5 account number.</span>
+          <input type="text" id="mt5_login"
+                 data-placeholder-en="e.g. 1080644"
+                 data-placeholder-ar="مثال: 1080644"
+                 placeholder="e.g. 1080644" required>
+          <span class="error-msg" id="err-mt5_login"
+                data-en="Please enter your MT5 account number."
+                data-ar="يرجى إدخال رقم حساب MT5.">
+            Please enter your MT5 account number.
+          </span>
         </div>
 
         <div class="field">
-          <label for="mt5_server">
-            MT5 server name
-            <span class="note"> — optional, leave blank if unsure</span>
+          <label for="mt5_server"
+                 data-en="MT5 server name — optional"
+                 data-ar="اسم خادم MT5 — اختياري">
+            MT5 server name <span class="note">— optional, leave blank if unsure</span>
           </label>
-          <input type="text" id="mt5_server" name="mt5_server" placeholder="e.g. NCMInvestmentKW-Live">
-          <p class="field-note">Find this in your MT5 app under Settings → Server.</p>
+          <input type="text" id="mt5_server"
+                 data-placeholder-en="e.g. NCMInvestmentKW-Live"
+                 data-placeholder-ar="مثال: NCMInvestmentKW-Live"
+                 placeholder="e.g. NCMInvestmentKW-Live">
+          <p class="field-note"
+             data-en="Find this in your MT5 app under Settings → Server."
+             data-ar="تجدها في تطبيق MT5 تحت الإعدادات ← الخادم.">
+            Find this in your MT5 app under Settings → Server.
+          </p>
         </div>
       </div>
 
-      <!-- Risk settings -->
+      <!-- ── Risk settings ── -->
       <div class="card">
-        <p class="section-title">Risk settings</p>
+        <p class="section-title" data-en="Risk settings" data-ar="إعدادات المخاطرة">
+          Risk settings
+        </p>
 
         <div class="two-col">
           <div class="field">
-            <label for="account_size">Account size (USD) *</label>
-            <input type="number" id="account_size" name="account_size"
+            <label for="account_size"
+                   data-en="Account size (USD) *"
+                   data-ar="حجم الحساب (دولار) *">Account size (USD) *</label>
+            <input type="number" id="account_size"
+                   data-placeholder-en="10000"
+                   data-placeholder-ar="10000"
                    placeholder="10000" min="100" required>
-            <span class="error-msg" id="err-account_size">Please enter your account size.</span>
+            <span class="error-msg" id="err-account_size"
+                  data-en="Please enter your account size."
+                  data-ar="يرجى إدخال حجم الحساب.">
+              Please enter your account size.
+            </span>
           </div>
 
           <div class="field">
-            <label for="risk">Risk preference *</label>
-            <select id="risk" name="risk" required onchange="toggleCustomRisk(this.value)">
-              <option value="">Select risk level</option>
-              <option value="1">Conservative — 1% per trade</option>
-              <option value="2" selected>Moderate — 2% per trade</option>
-              <option value="3">Balanced — 3% per trade</option>
-              <option value="5">Aggressive — 5% per trade</option>
-              <option value="custom">Custom — I'll specify</option>
+            <label for="risk"
+                   data-en="Risk preference *"
+                   data-ar="مستوى المخاطرة *">Risk preference *</label>
+            <select id="risk" required onchange="toggleCustomRisk(this.value)">
+              <option value=""
+                      data-en="Select risk level"
+                      data-ar="اختر المستوى">Select risk level</option>
+              <option value="1"
+                      data-en="Conservative — 1%"
+                      data-ar="محافظ — 1%">Conservative — 1%</option>
+              <option value="2" selected
+                      data-en="Moderate — 2%"
+                      data-ar="معتدل — 2%">Moderate — 2%</option>
+              <option value="3"
+                      data-en="Balanced — 3%"
+                      data-ar="متوازن — 3%">Balanced — 3%</option>
+              <option value="5"
+                      data-en="Aggressive — 5%"
+                      data-ar="عدواني — 5%">Aggressive — 5%</option>
+              <option value="custom"
+                      data-en="Custom — I'll specify"
+                      data-ar="مخصص — سأحدده">Custom — I'll specify</option>
             </select>
-            <span class="error-msg" id="err-risk">Please select a risk level.</span>
+            <span class="error-msg" id="err-risk"
+                  data-en="Please select a risk level."
+                  data-ar="يرجى اختيار مستوى المخاطرة.">
+              Please select a risk level.
+            </span>
           </div>
         </div>
 
-        <!-- Custom risk reveal -->
         <div id="custom-risk-field">
           <div class="field">
-            <label for="risk_custom">
+            <label for="risk_custom"
+                   data-en="Custom risk % per trade *"
+                   data-ar="نسبة المخاطرة المخصصة لكل صفقة *">
               Custom risk % per trade *
-              <span class="note"> — e.g. 10 for 10%, 50 for 50%</span>
+              <span class="note" data-en="e.g. 10 for 10%" data-ar="مثال: 10 لنسبة 10%">
+                — e.g. 10 for 10%
+              </span>
             </label>
-            <input type="number" id="risk_custom" name="risk_custom"
+            <input type="number" id="risk_custom"
+                   data-placeholder-en="e.g. 10"
+                   data-placeholder-ar="مثال: 10"
                    placeholder="e.g. 10" min="0.1" max="100" step="0.5">
-            <span class="error-msg" id="err-risk_custom">Please enter a valid risk %.</span>
-            <p class="field-note danger">
-              ⚠️ Risk above 10% per trade can result in rapid and large losses.
-              A single losing trade at 50% risk can lose half your account.
-              Only proceed if you fully understand and accept this.
+            <span class="error-msg" id="err-risk_custom"
+                  data-en="Please enter a valid risk %."
+                  data-ar="يرجى إدخال نسبة مخاطرة صحيحة.">
+              Please enter a valid risk %.
+            </span>
+            <p class="field-note danger"
+               data-en="⚠️ Risk above 10% can cause rapid large losses. At 50% risk a single losing trade loses half your account. Only proceed if you fully understand and accept this."
+               data-ar="⚠️ المخاطرة فوق 10% قد تسبب خسائر كبيرة وسريعة. عند 50% مخاطرة، صفقة خاسرة واحدة تخسر نصف حسابك. تابع فقط إذا كنت تفهم وتقبل ذلك تماماً.">
+              ⚠️ Risk above 10% can cause rapid large losses. At 50% risk a single losing trade loses half your account. Only proceed if you fully understand and accept this.
             </p>
           </div>
         </div>
 
         <div class="field" style="margin-top: 1rem">
-          <label for="notes">
-            Notes or questions
-            <span class="note"> — optional</span>
+          <label for="notes"
+                 data-en="Notes or questions — optional"
+                 data-ar="ملاحظات أو أسئلة — اختياري">
+            Notes or questions <span class="note">— optional</span>
           </label>
-          <input type="text" id="notes" name="notes"
+          <input type="text" id="notes"
+                 data-placeholder-en="Anything you'd like us to know"
+                 data-placeholder-ar="أي شيء تود إخبارنا به"
                  placeholder="Anything you'd like us to know">
         </div>
       </div>
 
-      <!-- Acknowledgement -->
-      <div class="card ack-card">
-        <p class="section-title">Acknowledgement</p>
+      <!-- ── Comprehensive disclaimer ── -->
+      <div class="disclaimer-card">
+        <p class="section-title" data-en="Risk disclosure &amp; agreement" data-ar="الإفصاح عن المخاطر والاتفاقية">
+          Risk disclosure &amp; agreement
+        </p>
+
+        <div class="disclaimer-body" id="disclaimer-body-en">
+          <p>Please read the following carefully before submitting. By ticking the box below you confirm that you have read, understood, and agree to all of the following:</p>
+          <ol>
+            <li><strong>Nature of service.</strong> GoldHawk is an automated algorithmic trading bot that places, manages, and closes trades on XAUUSD (Gold/USD) using your MT5 brokerage account. You are granting the service access to execute orders on your behalf.</li>
+            <li><strong>Capital at risk.</strong> Trading foreign exchange and commodities involves substantial risk of loss and is not suitable for all investors. You may lose some or all of the capital in your trading account. You should not fund your trading account with money you cannot afford to lose.</li>
+            <li><strong>No guaranteed returns.</strong> GoldHawk does not guarantee any specific level of performance, profit, or return. Past results, including any results shown during demonstrations or testing, do not guarantee or reliably predict future performance.</li>
+            <li><strong>Leverage risk.</strong> Trading on margin amplifies both profits and losses. A small adverse price movement can result in losses greater than your initial deposit. You confirm you understand how leverage works and the risks it carries.</li>
+            <li><strong>No financial advice.</strong> Nothing communicated by GoldHawk or its operators constitutes financial, investment, or trading advice. All trading decisions executed by the bot are algorithmic and not tailored to your personal financial situation.</li>
+            <li><strong>Service provider liability.</strong> GoldHawk and Radium Systems and Solutions accept no liability for any direct, indirect, or consequential financial loss arising from: (a) trades executed by the bot; (b) technical failures, connectivity issues, or VPS downtime; (c) broker outages or execution delays; (d) market gaps, slippage, or extreme volatility events.</li>
+            <li><strong>Your responsibilities.</strong> You remain fully responsible for your brokerage account at all times. You are responsible for ensuring sufficient margin, monitoring your account, and complying with your broker's terms of service. You may withdraw your account credentials and terminate the service at any time.</li>
+            <li><strong>Eligibility.</strong> You confirm that you are at least 18 years of age, that automated trading is legally permitted in your jurisdiction, and that you are legally authorised to enter into this agreement.</li>
+            <li><strong>Data use.</strong> The account credentials and personal information you provide will be used solely to configure and operate the trading bot on your behalf. Your data will not be sold or shared with any third party unrelated to service operation.</li>
+            <li><strong>Account credentials.</strong> You acknowledge that sharing your MT5 login credentials carries inherent risk. You do so voluntarily and with full understanding. You should change your password if you ever wish to revoke access.</li>
+          </ol>
+        </div>
+
+        <div class="disclaimer-body" id="disclaimer-body-ar" style="display:none; text-align: right;">
+          <p>يرجى قراءة ما يلي بعناية قبل الإرسال. بالنقر على مربع الموافقة أدناه فإنك تؤكد أنك قرأت وفهمت ووافقت على جميع ما يلي:</p>
+          <ol style="padding-right: 1.25rem; padding-left: 0;">
+            <li><strong>طبيعة الخدمة.</strong> GoldHawk هو بوت تداول آلي يقوم بفتح وإدارة وإغلاق صفقات XAUUSD (ذهب/دولار) باستخدام حساب MT5 الخاص بك. أنت تمنح الخدمة صلاحية تنفيذ الأوامر نيابةً عنك.</li>
+            <li><strong>المال في خطر.</strong> ينطوي تداول العملات الأجنبية والسلع على مخاطر خسارة جوهرية وقد لا يكون مناسباً لجميع المستثمرين. قد تخسر جزءاً أو كل رأس المال في حسابك. لا تموّل حسابك بأموال لا تستطيع تحمّل خسارتها.</li>
+            <li><strong>لا ضمان للعوائد.</strong> لا يضمن GoldHawk أي مستوى محدد من الأداء أو الربح أو العائد. النتائج السابقة، بما فيها تلك المعروضة في العروض التوضيحية، لا تضمن أو تتنبأ بشكل موثوق بالأداء المستقبلي.</li>
+            <li><strong>مخاطر الرافعة المالية.</strong> التداول على الهامش يضاعف الأرباح والخسائر على حدٍّ سواء. تحركٌ سعري صغير في الاتجاه المعاكس قد يؤدي إلى خسائر تفوق إيداعك الأولي. تؤكد أنك تفهم كيفية عمل الرافعة المالية والمخاطر التي تنطوي عليها.</li>
+            <li><strong>لا استشارة مالية.</strong> لا يُشكّل أي محتوى يصدر عن GoldHawk أو مشغّليه استشارةً مالية أو استثمارية أو تداولية. جميع قرارات التداول التي ينفذها البوت خوارزمية وغير مُصمَّمة وفقاً لوضعك المالي الشخصي.</li>
+            <li><strong>مسؤولية مزود الخدمة.</strong> لا يتحمل GoldHawk وشركة Radium Systems and Solutions أي مسؤولية عن أي خسارة مالية مباشرة أو غير مباشرة ناجمة عن: (أ) الصفقات التي ينفذها البوت؛ (ب) الأعطال التقنية أو مشاكل الاتصال أو توقف الخادم؛ (ج) انقطاع خدمات الوسيط أو تأخر التنفيذ؛ (د) فجوات السوق أو الانزلاق السعري أو أحداث التقلب الشديد.</li>
+            <li><strong>مسؤولياتك.</strong> أنت المسؤول الكامل عن حساب الوساطة الخاص بك في جميع الأوقات. تقع على عاتقك مسؤولية ضمان كفاية الهامش ومراقبة حسابك والامتثال لشروط خدمة الوسيط. يحق لك سحب بيانات اعتمادك وإنهاء الخدمة في أي وقت.</li>
+            <li><strong>الأهلية.</strong> تؤكد أن عمرك لا يقل عن 18 عاماً، وأن التداول الآلي مسموح به قانوناً في نطاق اختصاصك القضائي، وأنك مُخوَّل قانونياً بإبرام هذه الاتفاقية.</li>
+            <li><strong>استخدام البيانات.</strong> ستُستخدم بيانات الاعتماد والمعلومات الشخصية التي تقدمها حصراً لإعداد وتشغيل البوت نيابةً عنك. لن تُباع بياناتك أو تُشارَك مع أي طرف ثالث غير مرتبط بتشغيل الخدمة.</li>
+            <li><strong>بيانات اعتماد الحساب.</strong> تُقرّ بأن مشاركة بيانات تسجيل دخول MT5 تنطوي على مخاطر متأصلة. تفعل ذلك طوعاً وبفهم تام. يجب عليك تغيير كلمة المرور إذا أردت إلغاء الوصول في أي وقت.</li>
+          </ol>
+        </div>
+
         <div class="ack-row">
-          <input type="checkbox" id="ack" name="ack" required>
-          <label for="ack" class="ack-text" style="font-weight:400">
-            I understand this is an automated trading bot that will trade XAUUSD (Gold)
-            on my account. I accept the risks involved in automated trading and confirm
-            I am sharing my account details voluntarily with full knowledge of what
-            this service does.
+          <input type="checkbox" id="ack" required>
+          <label for="ack" class="ack-text"
+                 style="font-weight: 500; cursor: pointer;"
+                 data-en="I have read and understood all 10 points above. I accept the risks of automated trading and confirm I am voluntarily sharing my account details with full knowledge of what this service does. I am 18 or over and legally permitted to use this service."
+                 data-ar="لقد قرأت وفهمت جميع النقاط العشر أعلاه. أقبل مخاطر التداول الآلي وأؤكد أنني أشارك بيانات حسابي طوعاً مع إدراك كامل بطبيعة هذه الخدمة. عمري 18 عاماً أو أكثر وأنا مُخوَّل قانونياً لاستخدام هذه الخدمة.">
+            I have read and understood all 10 points above. I accept the risks of automated trading and confirm I am voluntarily sharing my account details with full knowledge of what this service does. I am 18 or over and legally permitted to use this service.
           </label>
         </div>
-        <span class="error-msg" id="err-ack" style="margin-top: 8px">
-          Please accept to continue.
+        <span class="error-msg" id="err-ack" style="margin-top: 8px"
+              data-en="You must read and accept the full disclosure to continue."
+              data-ar="يجب عليك قراءة الإفصاح الكامل والموافقة عليه للمتابعة.">
+          You must read and accept the full disclosure to continue.
         </span>
       </div>
 
-      <button type="submit" class="submit-btn" id="submit-btn">Submit</button>
-      <p class="submitting-msg" id="submitting-msg">Submitting... please wait.</p>
+      <button type="submit" class="submit-btn" id="submit-btn"
+              data-en="Submit" data-ar="إرسال">Submit</button>
+      <p class="submitting-msg" id="submitting-msg"
+         data-en="Submitting... please wait."
+         data-ar="جاري الإرسال... يرجى الانتظار.">
+        Submitting... please wait.
+      </p>
 
     </form>
   </div>
@@ -425,14 +537,17 @@
               stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <h2>You're all set</h2>
-    <p>
-      We've received your details. Our team will contact you on WhatsApp within
-      24 hours to complete the setup securely. You don't need to do anything else.
+    <h2 data-en="You're all set" data-ar="تم بنجاح">You're all set</h2>
+    <p data-en="We've received your details. Our team will contact you on WhatsApp within 24 hours to complete the setup securely."
+       data-ar="استلمنا بياناتك. سيتواصل معك فريقنا عبر واتساب خلال 24 ساعة لإتمام الإعداد بأمان.">
+      We've received your details. Our team will contact you on WhatsApp within 24 hours
+      to complete the setup securely.
     </p>
   </div>
 
-  <p class="footer-note">
+  <p class="footer-note"
+     data-en="GoldHawk — automated gold trading&#10;Your data is stored securely and never shared with third parties."
+     data-ar="GoldHawk — تداول الذهب الآلي&#10;بياناتك مخزنة بأمان ولن تُشارَك مع أطراف ثالثة.">
     GoldHawk — automated gold trading<br>
     Your data is stored securely and never shared with third parties.
   </p>
@@ -442,23 +557,69 @@
 <script>
   const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyDPwq5HrIK5OwhGOJSd5QglIDZ0d-aHonDZjOB4SKz_dYExp5S_mC_T4m3gqv9CKaYuQ/exec";
 
-  const form    = document.getElementById("onboarding-form");
-  const btn     = document.getElementById("submit-btn");
-  const spinner = document.getElementById("submitting-msg");
+  let currentLang = "en";
+
+  // ----------------------------------------------------------------
+  // Language switcher — switches labels, placeholders, errors, RTL
+  // ----------------------------------------------------------------
+  function switchLanguage(lang) {
+    currentLang = lang;
+    const isAr  = (lang === "ar" || lang === "both");
+
+    // HTML dir + body class
+    document.documentElement.setAttribute("dir", isAr ? "rtl" : "ltr");
+    document.documentElement.setAttribute("lang", isAr ? "ar" : "en");
+    document.body.classList.toggle("rtl", isAr);
+
+    // Switch all data-en / data-ar text nodes
+    document.querySelectorAll("[data-en][data-ar]").forEach(el => {
+      const text = isAr ? el.getAttribute("data-ar") : el.getAttribute("data-en");
+      // Don't overwrite input values — only labels, spans, p, h1, button
+      if (el.tagName !== "INPUT" && el.tagName !== "SELECT") {
+        el.textContent = text;
+      }
+    });
+
+    // Switch placeholders
+    document.querySelectorAll("[data-placeholder-en][data-placeholder-ar]").forEach(el => {
+      el.placeholder = isAr
+        ? el.getAttribute("data-placeholder-ar")
+        : el.getAttribute("data-placeholder-en");
+    });
+
+    // Switch select option text
+    document.querySelectorAll("select option[data-en][data-ar]").forEach(opt => {
+      opt.textContent = isAr
+        ? opt.getAttribute("data-ar")
+        : opt.getAttribute("data-en");
+    });
+
+    // Switch disclaimer body
+    document.getElementById("disclaimer-body-en").style.display = isAr ? "none"  : "block";
+    document.getElementById("disclaimer-body-ar").style.display = isAr ? "block" : "none";
+
+    // Submit button
+    const btn = document.getElementById("submit-btn");
+    if (!btn.disabled) {
+      btn.textContent = isAr ? btn.getAttribute("data-ar") : btn.getAttribute("data-en");
+    }
+  }
+
+  // Listen for language radio changes
+  document.querySelectorAll('input[name="lang"]').forEach(radio => {
+    radio.addEventListener("change", () => switchLanguage(radio.value));
+  });
 
   // ----------------------------------------------------------------
   // Custom risk toggle
   // ----------------------------------------------------------------
   function toggleCustomRisk(val) {
-    const field  = document.getElementById("custom-risk-field");
-    const input  = document.getElementById("risk_custom");
-    const show   = val === "custom";
+    const field = document.getElementById("custom-risk-field");
+    const input = document.getElementById("risk_custom");
+    const show  = val === "custom";
     field.style.display = show ? "block" : "none";
     input.required      = show;
-    if (!show) {
-      input.value = "";
-      showError("risk_custom", false);
-    }
+    if (!show) { input.value = ""; showError("risk_custom", false); }
   }
 
   // ----------------------------------------------------------------
@@ -469,46 +630,71 @@
     if (el) el.style.display = show ? "block" : "none";
   }
 
-  function validate() {
-    let valid = true;
+  const errorMessages = {
+    en: {
+      name: "Please enter your full name.",
+      email: "Please enter a valid email.",
+      whatsapp: "Please enter your WhatsApp number.",
+      broker: "Please select your broker.",
+      mt5_login: "Please enter your MT5 account number.",
+      account_size: "Please enter your account size.",
+      risk: "Please select a risk level.",
+      risk_custom: "Please enter a valid risk %.",
+      ack: "You must read and accept the full disclosure to continue.",
+    },
+    ar: {
+      name: "يرجى إدخال اسمك الكامل.",
+      email: "يرجى إدخال بريد إلكتروني صحيح.",
+      whatsapp: "يرجى إدخال رقم واتساب.",
+      broker: "يرجى اختيار الوسيط.",
+      mt5_login: "يرجى إدخال رقم حساب MT5.",
+      account_size: "يرجى إدخال حجم الحساب.",
+      risk: "يرجى اختيار مستوى المخاطرة.",
+      risk_custom: "يرجى إدخال نسبة مخاطرة صحيحة.",
+      ack: "يجب عليك قراءة الإفصاح الكامل والموافقة عليه للمتابعة.",
+    },
+  };
 
-    // Required text/select fields
+  function validate() {
+    let valid   = true;
+    const isAr  = (currentLang === "ar" || currentLang === "both");
+    const msgs  = isAr ? errorMessages.ar : errorMessages.en;
+
     const fields = ["name", "email", "whatsapp", "broker", "mt5_login", "account_size"];
     fields.forEach(f => {
-      const el    = document.getElementById(f);
-      const empty = !el.value.trim();
-      showError(f, empty);
+      const empty = !document.getElementById(f).value.trim();
+      const el    = document.getElementById("err-" + f);
+      if (el) { el.textContent = msgs[f]; el.style.display = empty ? "block" : "none"; }
       if (empty) valid = false;
     });
 
-    // Email format
     const email = document.getElementById("email").value;
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      showError("email", true);
+      const el = document.getElementById("err-email");
+      if (el) { el.textContent = msgs.email; el.style.display = "block"; }
       valid = false;
     }
 
-    // Risk — must have a selection
     const riskVal = document.getElementById("risk").value;
     if (!riskVal) {
-      showError("risk", true);
+      const el = document.getElementById("err-risk");
+      if (el) { el.textContent = msgs.risk; el.style.display = "block"; }
       valid = false;
     }
-
-    // Custom risk — must be a valid number if selected
     if (riskVal === "custom") {
-      const customVal = parseFloat(document.getElementById("risk_custom").value);
-      if (!customVal || customVal <= 0 || customVal > 100) {
-        showError("risk_custom", true);
+      const cv = parseFloat(document.getElementById("risk_custom").value);
+      const el = document.getElementById("err-risk_custom");
+      if (!cv || cv <= 0 || cv > 100) {
+        if (el) { el.textContent = msgs.risk_custom; el.style.display = "block"; }
         valid = false;
       } else {
-        showError("risk_custom", false);
+        if (el) el.style.display = "none";
       }
     }
 
-    // Acknowledgement
     const ack = document.getElementById("ack");
-    showError("ack", !ack.checked);
+    const ackEl = document.getElementById("err-ack");
+    if (ackEl) { ackEl.textContent = msgs.ack; ackEl.style.display = ack.checked ? "none" : "block"; }
     if (!ack.checked) valid = false;
 
     return valid;
@@ -517,15 +703,19 @@
   // ----------------------------------------------------------------
   // Submit
   // ----------------------------------------------------------------
-  form.addEventListener("submit", async function(e) {
+  document.getElementById("onboarding-form").addEventListener("submit", async function(e) {
     e.preventDefault();
     if (!validate()) return;
 
-    btn.disabled        = true;
-    btn.textContent     = "Submitting...";
+    const btn     = document.getElementById("submit-btn");
+    const spinner = document.getElementById("submitting-msg");
+    const isAr    = (currentLang === "ar" || currentLang === "both");
+
+    btn.disabled          = true;
+    btn.textContent       = isAr ? "جاري الإرسال..." : "Submitting...";
+    spinner.textContent   = isAr ? "جاري الإرسال... يرجى الانتظار." : "Submitting... please wait.";
     spinner.style.display = "block";
 
-    // Resolve final risk value
     const riskSelect = document.getElementById("risk").value;
     const finalRisk  = riskSelect === "custom"
       ? document.getElementById("risk_custom").value.trim()
@@ -540,6 +730,7 @@
       mt5_server:   document.getElementById("mt5_server").value.trim(),
       account_size: document.getElementById("account_size").value.trim(),
       risk:         finalRisk,
+      language:     currentLang,
       notes:        document.getElementById("notes").value.trim(),
       submitted_at: new Date().toISOString(),
     };
@@ -553,12 +744,19 @@
       });
       document.getElementById("form-section").style.display  = "none";
       document.getElementById("success-screen").style.display = "block";
+      // Switch success screen text
+      document.querySelectorAll("#success-screen [data-en][data-ar]").forEach(el => {
+        el.textContent = isAr ? el.getAttribute("data-ar") : el.getAttribute("data-en");
+      });
       window.scrollTo(0, 0);
     } catch (err) {
       btn.disabled          = false;
-      btn.textContent       = "Submit";
+      btn.textContent       = isAr ? "إرسال" : "Submit";
       spinner.style.display = "none";
-      alert("Something went wrong. Please try again or contact us directly on WhatsApp.");
+      alert(isAr
+        ? "حدث خطأ. يرجى المحاولة مرة أخرى أو التواصل معنا عبر واتساب."
+        : "Something went wrong. Please try again or contact us directly on WhatsApp."
+      );
     }
   });
 </script>
