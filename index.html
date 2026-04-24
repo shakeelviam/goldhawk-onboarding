@@ -134,6 +134,15 @@
       line-height: 1.4;
     }
 
+    .field-note.danger {
+      color: #c0392b;
+      background: #fdf2f2;
+      border: 1px solid #f5c6c6;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-top: 8px;
+    }
+
     .two-col {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -190,6 +199,12 @@
       color: #aaa;
       margin-top: 1.5rem;
       line-height: 1.6;
+    }
+
+    /* Custom risk reveal */
+    #custom-risk-field {
+      display: none;
+      margin-top: 10px;
     }
 
     /* Success screen */
@@ -332,24 +347,50 @@
         <div class="two-col">
           <div class="field">
             <label for="account_size">Account size (USD) *</label>
-            <input type="number" id="account_size" name="account_size" placeholder="10000" min="100" required>
+            <input type="number" id="account_size" name="account_size"
+                   placeholder="10000" min="100" required>
             <span class="error-msg" id="err-account_size">Please enter your account size.</span>
           </div>
+
           <div class="field">
             <label for="risk">Risk preference *</label>
-            <select id="risk" name="risk" required>
+            <select id="risk" name="risk" required onchange="toggleCustomRisk(this.value)">
               <option value="">Select risk level</option>
               <option value="1">Conservative — 1% per trade</option>
               <option value="2" selected>Moderate — 2% per trade</option>
               <option value="3">Balanced — 3% per trade</option>
               <option value="5">Aggressive — 5% per trade</option>
+              <option value="custom">Custom — I'll specify</option>
             </select>
+            <span class="error-msg" id="err-risk">Please select a risk level.</span>
+          </div>
+        </div>
+
+        <!-- Custom risk reveal -->
+        <div id="custom-risk-field">
+          <div class="field">
+            <label for="risk_custom">
+              Custom risk % per trade *
+              <span class="note"> — e.g. 10 for 10%, 50 for 50%</span>
+            </label>
+            <input type="number" id="risk_custom" name="risk_custom"
+                   placeholder="e.g. 10" min="0.1" max="100" step="0.5">
+            <span class="error-msg" id="err-risk_custom">Please enter a valid risk %.</span>
+            <p class="field-note danger">
+              ⚠️ Risk above 10% per trade can result in rapid and large losses.
+              A single losing trade at 50% risk can lose half your account.
+              Only proceed if you fully understand and accept this.
+            </p>
           </div>
         </div>
 
         <div class="field" style="margin-top: 1rem">
-          <label for="notes">Notes or questions <span class="note"> — optional</span></label>
-          <input type="text" id="notes" name="notes" placeholder="Anything you'd like us to know">
+          <label for="notes">
+            Notes or questions
+            <span class="note"> — optional</span>
+          </label>
+          <input type="text" id="notes" name="notes"
+                 placeholder="Anything you'd like us to know">
         </div>
       </div>
 
@@ -359,12 +400,15 @@
         <div class="ack-row">
           <input type="checkbox" id="ack" name="ack" required>
           <label for="ack" class="ack-text" style="font-weight:400">
-            I understand this is an automated trading bot that will trade XAUUSD (Gold) on my account.
-            I accept the risks involved in automated trading and confirm I am sharing my account
-            details voluntarily with full knowledge of what this service does.
+            I understand this is an automated trading bot that will trade XAUUSD (Gold)
+            on my account. I accept the risks involved in automated trading and confirm
+            I am sharing my account details voluntarily with full knowledge of what
+            this service does.
           </label>
         </div>
-        <span class="error-msg" id="err-ack" style="margin-top: 8px">Please accept to continue.</span>
+        <span class="error-msg" id="err-ack" style="margin-top: 8px">
+          Please accept to continue.
+        </span>
       </div>
 
       <button type="submit" class="submit-btn" id="submit-btn">Submit</button>
@@ -377,13 +421,14 @@
   <div class="success-screen" id="success-screen">
     <div class="success-icon">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M5 13l4 4L19 7" stroke="#1a7a4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5 13l4 4L19 7" stroke="#1a7a4a" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
     <h2>You're all set</h2>
     <p>
-      We've received your details. Our team will contact you on WhatsApp within 24 hours
-      to complete the setup securely. You don't need to do anything else.
+      We've received your details. Our team will contact you on WhatsApp within
+      24 hours to complete the setup securely. You don't need to do anything else.
     </p>
   </div>
 
@@ -395,47 +440,96 @@
 </div>
 
 <script>
-  // ----------------------------------------------------------------
-  // REPLACE THIS with your Google Apps Script Web App URL
-  // (see onboarding_script.gs for setup instructions)
-  // ----------------------------------------------------------------
   const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyDPwq5HrIK5OwhGOJSd5QglIDZ0d-aHonDZjOB4SKz_dYExp5S_mC_T4m3gqv9CKaYuQ/exec";
 
   const form    = document.getElementById("onboarding-form");
   const btn     = document.getElementById("submit-btn");
   const spinner = document.getElementById("submitting-msg");
 
+  // ----------------------------------------------------------------
+  // Custom risk toggle
+  // ----------------------------------------------------------------
+  function toggleCustomRisk(val) {
+    const field  = document.getElementById("custom-risk-field");
+    const input  = document.getElementById("risk_custom");
+    const show   = val === "custom";
+    field.style.display = show ? "block" : "none";
+    input.required      = show;
+    if (!show) {
+      input.value = "";
+      showError("risk_custom", false);
+    }
+  }
+
+  // ----------------------------------------------------------------
+  // Validation
+  // ----------------------------------------------------------------
   function showError(id, show) {
-    document.getElementById("err-" + id).style.display = show ? "block" : "none";
+    const el = document.getElementById("err-" + id);
+    if (el) el.style.display = show ? "block" : "none";
   }
 
   function validate() {
     let valid = true;
+
+    // Required text/select fields
     const fields = ["name", "email", "whatsapp", "broker", "mt5_login", "account_size"];
     fields.forEach(f => {
-      const el = document.getElementById(f);
+      const el    = document.getElementById(f);
       const empty = !el.value.trim();
       showError(f, empty);
       if (empty) valid = false;
     });
+
+    // Email format
     const email = document.getElementById("email").value;
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       showError("email", true);
       valid = false;
     }
+
+    // Risk — must have a selection
+    const riskVal = document.getElementById("risk").value;
+    if (!riskVal) {
+      showError("risk", true);
+      valid = false;
+    }
+
+    // Custom risk — must be a valid number if selected
+    if (riskVal === "custom") {
+      const customVal = parseFloat(document.getElementById("risk_custom").value);
+      if (!customVal || customVal <= 0 || customVal > 100) {
+        showError("risk_custom", true);
+        valid = false;
+      } else {
+        showError("risk_custom", false);
+      }
+    }
+
+    // Acknowledgement
     const ack = document.getElementById("ack");
     showError("ack", !ack.checked);
     if (!ack.checked) valid = false;
+
     return valid;
   }
 
+  // ----------------------------------------------------------------
+  // Submit
+  // ----------------------------------------------------------------
   form.addEventListener("submit", async function(e) {
     e.preventDefault();
     if (!validate()) return;
 
-    btn.disabled = true;
-    btn.textContent = "Submitting...";
+    btn.disabled        = true;
+    btn.textContent     = "Submitting...";
     spinner.style.display = "block";
+
+    // Resolve final risk value
+    const riskSelect = document.getElementById("risk").value;
+    const finalRisk  = riskSelect === "custom"
+      ? document.getElementById("risk_custom").value.trim()
+      : riskSelect;
 
     const data = {
       name:         document.getElementById("name").value.trim(),
@@ -445,7 +539,7 @@
       mt5_login:    document.getElementById("mt5_login").value.trim(),
       mt5_server:   document.getElementById("mt5_server").value.trim(),
       account_size: document.getElementById("account_size").value.trim(),
-      risk:         document.getElementById("risk").value,
+      risk:         finalRisk,
       notes:        document.getElementById("notes").value.trim(),
       submitted_at: new Date().toISOString(),
     };
@@ -457,12 +551,12 @@
         headers: { "Content-Type": "application/json" },
         body:    JSON.stringify(data),
       });
-      document.getElementById("form-section").style.display = "none";
+      document.getElementById("form-section").style.display  = "none";
       document.getElementById("success-screen").style.display = "block";
       window.scrollTo(0, 0);
     } catch (err) {
-      btn.disabled = false;
-      btn.textContent = "Submit";
+      btn.disabled          = false;
+      btn.textContent       = "Submit";
       spinner.style.display = "none";
       alert("Something went wrong. Please try again or contact us directly on WhatsApp.");
     }
