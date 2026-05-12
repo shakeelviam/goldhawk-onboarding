@@ -307,7 +307,7 @@
         </div>
       </div>
 
-      <!-- ── MT5 account details ── -->
+      <!-- ── MT5 account details (including margin) ── -->
       <div class="card">
         <p class="section-title" data-en="MT5 account details" data-ar="بيانات حساب MT5">
           MT5 account details
@@ -366,6 +366,23 @@
              data-en="Find this in your MT5 app under Settings → Server."
              data-ar="تجدها في تطبيق MT5 تحت الإعدادات ← الخادم.">
             Find this in your MT5 app under Settings → Server.
+          </p>
+        </div>
+
+        <div class="field">
+          <label for="margin_per_lot"
+                 data-en="Margin for 1 lot XAUUSD (USD) — optional"
+                 data-ar="الهامش لكل 1 لوت XAUUSD (دولار) — اختياري">
+            Margin for 1 lot XAUUSD (USD) <span class="note">— optional</span>
+          </label>
+          <input type="number" id="margin_per_lot"
+                 data-placeholder-en="e.g. 1200"
+                 data-placeholder-ar="مثال: 1200"
+                 placeholder="e.g. 1200" step="1" min="0">
+          <p class="field-note"
+             data-en="Used to calculate initial margin requirements (e.g., 1,200 USD for 1 lot). Leave blank if unsure."
+             data-ar="تُستخدم لحساب متطلبات الهامش الأولي (مثال: 1200 دولار لكل 1 لوت). اتركها فارغة إذا لم تكن متأكداً.">
+            Used to calculate initial margin requirements (e.g., 1,200 USD for 1 lot). Leave blank if unsure.
           </p>
         </div>
       </div>
@@ -728,6 +745,7 @@
       broker:       document.getElementById("broker").value,
       mt5_login:    document.getElementById("mt5_login").value.trim(),
       mt5_server:   document.getElementById("mt5_server").value.trim(),
+      margin_per_lot: document.getElementById("margin_per_lot").value.trim() || "",
       account_size: document.getElementById("account_size").value.trim(),
       risk:         finalRisk,
       language:     currentLang,
