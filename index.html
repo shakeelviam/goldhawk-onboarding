@@ -375,10 +375,10 @@
                  data-ar="الهامش لكل 1 لوت XAUUSD (دولار) — اختياري">
             Margin for 1 lot XAUUSD (USD) <span class="note">— optional</span>
           </label>
-          <input type="number" id="margin_per_lot"
+          <input type="text" id="margin_per_lot" inputmode="numeric"
                  data-placeholder-en="e.g. 1200"
                  data-placeholder-ar="مثال: 1200"
-                 placeholder="e.g. 1200" step="1" min="0">
+                 placeholder="e.g. 1200">
           <p class="field-note"
              data-en="Used to calculate initial margin requirements (e.g., 1,200 USD for 1 lot). Leave blank if unsure."
              data-ar="تُستخدم لحساب متطلبات الهامش الأولي (مثال: 1200 دولار لكل 1 لوت). اتركها فارغة إذا لم تكن متأكداً.">
@@ -745,7 +745,7 @@
       broker:       document.getElementById("broker").value,
       mt5_login:    document.getElementById("mt5_login").value.trim(),
       mt5_server:   document.getElementById("mt5_server").value.trim(),
-      margin_per_lot: document.getElementById("margin_per_lot").value.trim() || "",
+      margin_per_lot: document.getElementById("margin_per_lot").value.trim(),
       account_size: document.getElementById("account_size").value.trim(),
       risk:         finalRisk,
       language:     currentLang,
